@@ -1,6 +1,6 @@
 # nodb
 
-### Simple, flexible and extensible database API for all javascript environments
+### Minimal database API designed for extensibility.
 
 ## Installation
 

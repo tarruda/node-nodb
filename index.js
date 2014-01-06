@@ -1,34 +1,48 @@
+/*jshint eqnull:true */
+
 var classic = require('classic');
 
-var NoDBExtension = require('./lib/extension');
+var NoDBMiddleware = require('./lib/middleware');
 
 
 var NoDB = classic({
-  constructor: function NoDB(extensions) {
-    var next = null;
-
-    // chain extensions
-    for (var i = extensions.length - 1; i >= 0; i--) {
-      next = new NoDBExtension(extensions[i], next);
-    }
-
-    // only need to reference the first extension
-    this._top = next;
+  constructor: function NoDB() {
+    this._head = this._tail = null;
   },
 
 
   put: function(key, value, cb) {
-    this._top.put(key, value, cb);
+    return this._head.put(key, value, cb);
   },
 
 
   del: function(key, cb) {
-    this._top.del(key, cb);
+    return this._head.del(key, cb);
   },
 
 
   get: function(key, cb) {
-    this._top.get(key, cb);
+    return this._head.get(key, cb);
+  },
+
+
+  iterator: function(options, cb) {
+    return this._head.iterator(options, cb);
+  },
+
+
+  use: function(middleware) {
+    if (typeof middleware === 'function')
+      // call factory function
+      middleware = middleware(this);
+
+    if (this._head == null) {
+      this._head = this._tail = new NoDBMiddleware(middleware);
+      return;
+    }
+
+    this._tail.next = new NoDBMiddleware(middleware);
+    this._tail = this._tail.next;
   }
 });
 

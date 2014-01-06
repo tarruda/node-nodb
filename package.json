@@ -1,6 +1,6 @@
 {
   "name": "nodb",
-  "description": "Simple database API designed with extensibility from the scratch.",
+  "description": "Minimal database API designed for extensibility.",
   "version": "0.0.1",
   "homepage": "https://github.com/tarruda/nodb",
   "author": {
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "mocha": "~1.16.2",
-    "nodemon": "~1.0.1",
+    "nodemon": "1.0.1",
     "sinon": "~1.7.3",
     "has": "0.0.1",
     "classic": "0.0.2"
