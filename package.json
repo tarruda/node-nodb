@@ -1,0 +1,34 @@
+{
+  "name": "nodb",
+  "description": "Simple database API designed with extensibility from the scratch.",
+  "version": "0.0.0",
+  "homepage": "https://github.com/tarruda/nodb",
+  "author": {
+    "name": "Thiago de Arruda",
+    "email": "tpadilha84@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tarruda/nodb.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tarruda/nodb/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/tarruda/nodb/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "./index",
+  "scripts": {
+    "test": "make test"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2",
+    "nodemon": "~1.0.1",
+    "sinon": "~1.7.3",
+    "has": "0.0.1",
+    "classic": "0.0.2"
+  }
+}
