@@ -22,17 +22,17 @@
   ],
   "main": "./index",
   "scripts": {
-    "test": "make test"
+    "test": "make test && testling"
   },
   "dependencies": {
-    "has": "0.0.1",
     "classic": "0.0.2"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
     "nodemon": "1.0.1",
     "sinon": "~1.7.3",
-    "testling": "~1.5.6"
+    "testling": "~1.5.6",
+    "browserify": "~3.19.0"
   },
   "testling": {
     "browsers": [
