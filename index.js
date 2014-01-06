@@ -1,5 +1,4 @@
 var classic = require('classic');
-var series = require('continuable-series');
 
 var NoDBExtension = require('./lib/extension');
 
