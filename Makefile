@@ -1,6 +1,4 @@
-TESTS = \
-				test/index.js\
-				test/*.js
+TESTS = test/*.js
 
 
 test:
@@ -10,6 +8,7 @@ test:
 		else \
 		./node_modules/.bin/mocha $(TESTS); \
 		fi
+	@./node_modules/.bin/testling
 
 
 watch:
