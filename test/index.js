@@ -12,44 +12,44 @@ describe('nodb', function() {
 
   beforeEach(function() {
     top = {
-      put: function(key, value, next, cb) {
+      put: function(key, value, cb, next) {
         next(key * 2, value / 2, function(r) { cb(true); });
       },
-      del: function(key, next, cb) {
+      del: function(key, cb, next) {
         next(key * 4, function(x, y) { cb(x, y / 3); });
       },
-      get: function(key, next, cb) {
+      get: function(key, cb, next) {
         next(key * 8, function(x, y) { cb(x, y * 10); });
       },
-      iterator: function(options, next, cb) {
+      iterator: function(options, cb, next) {
         next(options * 64, function(x, y) { cb(x, y / 64); });
       }
     };
     mid = {
-      put: function(key, value, next, cb) {
+      put: function(key, value, cb, next) {
         next(key * 2, value / 2, function(r) { cb(false); });
       },
-      del: function(key, next, cb) {
+      del: function(key, cb, next) {
         next(key * 4, function(x, y) { cb(x, y / 3); });
       },
-      get: function(key, next, cb) {
+      get: function(key, cb, next) {
         next(key * 8, function(x, y) { cb(x, y * 10); });
       },
-      iterator: function(options, next, cb) {
+      iterator: function(options, cb, next) {
         next(options * 64, function(x, y) { cb(x, y / 64); });
       }
     };
     bot = {
-      put: function(key, value, next, cb) {
+      put: function(key, value, cb, next) {
         cb(null);
       },
-      del: function(key, next, cb) {
+      del: function(key, cb, next) {
         cb(null, 9);
       },
-      get: function(key, next, cb) {
+      get: function(key, cb, next) {
         cb(null, 9);
       },
-      iterator: function(options, next, cb) {
+      iterator: function(options, cb, next) {
         cb(null, options);
       }
     };
@@ -68,9 +68,9 @@ describe('nodb', function() {
     sinon.spy(bot, 'iterator');
 
     db = nodb();
-    db.use(top);
-    db.use(mid);
-    db.use(bot);
+    db.layer(bot);
+    db.layer(mid);
+    db.layer(top);
   });
 
 

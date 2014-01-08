@@ -25,7 +25,7 @@
     "test": "make test && testling"
   },
   "dependencies": {
-    "classic": "0.0.2"
+    "extensible": "0.0.2"
   },
   "devDependencies": {
     "mocha": "~1.16.2",
